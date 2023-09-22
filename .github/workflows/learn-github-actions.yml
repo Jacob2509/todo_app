@@ -6,6 +6,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Hello Testbash!"
+  start-server:
+    runs-on: ubuntu-latest
+    steps:
+      - run: cd src/webapp
       - run: npm install
       - run: npm start-server
+  unit-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - run: cd src/webapp/api
+      - run: npm install
+      - run: npm run test
+  UI-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - run: cd e2e
+      - run: npm install
       - run: npm run test
