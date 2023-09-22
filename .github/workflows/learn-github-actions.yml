@@ -7,7 +7,7 @@ jobs:
     steps:
       - run: echo "Hello Testbash!"
 
-  start-server:
+  ui tests:
     runs-on: ubuntu-latest
     steps:
         - uses: actions/checkout@v3
@@ -15,6 +15,7 @@ jobs:
           with:
             node-version: '20'
         - run: cd ./src/webapp && npm ci && npm run start-server
+        - run: cd ./e2e && npm ci && npm run test
 
   run-unit-tests:
       runs-on: ubuntu-latest
