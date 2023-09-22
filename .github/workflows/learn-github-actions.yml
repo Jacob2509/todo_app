@@ -6,24 +6,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Hello Testbash!"
-jobs:
-  unit-tests:
-    runs-on: ubuntu-latest
-    steps:
-      - run: cd src/webapp/api
-      - run: npm install
-      - run: npm run test
-jobs:
-  UI-tests:
-    runs-on: ubuntu-latest
-    steps:
-      - run: cd e2e
-      - run: npm install
-      - run: npm run test
-jobs:
-  start-server:
+
+  run-unit-tests:
       runs-on: ubuntu-latest
       steps:
-        - run: cd src/webapp
-        - run: npm install
-        - run: npm start-server
+        - uses: actions/checkout@v3
+        - uses: actions/setup-node@v3
+          with:
+            node-version: '20'
+        - run: cd ./src/webapp/api && npm ci && npm run test
