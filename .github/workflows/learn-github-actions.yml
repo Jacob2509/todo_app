@@ -6,3 +6,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Hello Testbash!"
+      - run: npm install
+      - run: npm start-server
+      - run: npm run test
